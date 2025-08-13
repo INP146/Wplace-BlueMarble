@@ -210,7 +210,25 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const overlay = new Overlay();overlay.addDiv({ 'id': 'overlay' })  .addDiv({ 'id': 'header' })    .addHeader(1, {'textContent': 'Your Overlay'}).buildElement()    .addP({'textContent': 'This is your overlay. It is versatile.'}).buildElement()  .buildElement() // Marks the end of the header &lt;div>  .addHr().buildElement().buildOverlay(document.body);// Output:// (Assume &lt;body> already exists in the webpage)&lt;body>  &lt;div id="overlay">    &lt;div id="header">      &lt;h1>Your Overlay&lt;/h1>      &lt;p>This is your overlay. It is versatile.&lt;/p>    &lt;/div>    &lt;hr>  &lt;/div>&lt;/body></code></pre>
+    <pre class="prettyprint"><code>const overlay = new Overlay();
+overlay.addDiv({ 'id': 'overlay' })
+  .addDiv({ 'id': 'header' })
+    .addHeader(1, {'textContent': 'Your Overlay'}).buildElement()
+    .addP({'textContent': 'This is your overlay. It is versatile.'}).buildElement()
+  .buildElement() // Marks the end of the header &lt;div>
+  .addHr().buildElement()
+.buildOverlay(document.body);
+// Output:
+// (Assume &lt;body> already exists in the webpage)
+&lt;body>
+  &lt;div id="overlay">
+    &lt;div id="header">
+      &lt;h1>Your Overlay&lt;/h1>
+      &lt;p>This is your overlay. It is versatile.&lt;/p>
+    &lt;/div>
+    &lt;hr>
+  &lt;/div>
+&lt;/body></code></pre>
 
 
 
@@ -252,7 +270,8 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">This class contains all MutationObservers used (which is 1 probably).This is not an object, but rather a "collection" of functions (in a class).</div>
+            <div class="class-description">This class contains all MutationObservers used (which is 1 probably).
+This is not an object, but rather a "collection" of functions (in a class).</div>
         
     
 </header>
@@ -390,7 +409,9 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Manages the template system.This class handles all external requests for template modification, creation, and analysis.It serves as the central coordinator between template instances and the user interface.</div>
+            <div class="class-description">Manages the template system.
+This class handles all external requests for template modification, creation, and analysis.
+It serves as the central coordinator between template instances and the user interface.</div>
         
     
 </header>
@@ -491,7 +512,32 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// JSON structure for a template{  "whoami": "BlueMarble",  "scriptVersion": "1.13.0",  "schemaVersion": "2.1.0",  "templates": {    "0 $Z": {      "name": "My Template",      "enabled": true,      "tiles": {        "1231,0047,183,593": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",        "1231,0048,183,000": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"      }    },    "1 $Z": {      "name": "My Template",      "URL": "https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/dist/assets/Favicon.png",      "URLType": "template",      "enabled": false,      "tiles": {        "375,1846,276,188": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",        "376,1846,000,188": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"      }    }  }}</code></pre>
+    <pre class="prettyprint"><code>// JSON structure for a template
+{
+  "whoami": "BlueMarble",
+  "scriptVersion": "1.13.0",
+  "schemaVersion": "2.1.0",
+  "templates": {
+    "0 $Z": {
+      "name": "My Template",
+      "enabled": true,
+      "tiles": {
+        "1231,0047,183,593": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
+        "1231,0048,183,000": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
+      }
+    },
+    "1 $Z": {
+      "name": "My Template",
+      "URL": "https://github.com/INP146.png",
+      "URLType": "template",
+      "enabled": false,
+      "tiles": {
+        "375,1846,276,188": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
+        "376,1846,000,188": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
+      }
+    }
+  }
+}</code></pre>
 
 
 
@@ -533,7 +579,8 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">(params<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">An instance of a template.Handles all mathematics, manipulation, and analysis regarding a single template.</div>
+            <div class="class-description">An instance of a template.
+Handles all mathematics, manipulation, and analysis regarding a single template.</div>
         
     
 </header>

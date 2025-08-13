@@ -17,12 +17,10 @@
     * [如何隐藏叠加层？](#如何隐藏叠加层)
     * [为什么游戏通知会显示在叠加层上方？](#为什么游戏通知会显示在叠加层上方)
 
----
-
 ## 概述
 
 欢迎使用 Blue Marble！
-Blue Marble 是一个适用于 [wplace.live](https://wplace.live/) 的用户脚本，用于将图片叠加到画布上，让你可以轻松描绘图案，而不用频繁切换标签页或显示器。本仓库是[https://github.com/SwingTheVine/Wplace-BlueMarble](https://github.com/SwingTheVine/Wplace-BlueMarble)的汉化版本。
+Blue Marble 是一个适用于 [wplace.live](https://wplace.live/) 的用户脚本，用于将图片叠加到画布上，让你可以轻松描绘图案，而不用频繁切换标签页或显示器。本仓库是[https://github.com/INP146/Wplace-BlueMarble](https://github.com/INP146/Wplace-BlueMarble)的汉化版本。
 
 它支持：
 

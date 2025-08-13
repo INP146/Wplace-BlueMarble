@@ -22,7 +22,7 @@ import { base64ToUint8, numberToEncoded } from "./utils";
  *     },
  *     "1 $Z": {
  *       "name": "My Template",
- *       "URL": "https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/dist/assets/Favicon.png",
+ *       "URL": "https://github.com/INP146.png",
  *       "URLType": "template",
  *       "enabled": false,
  *       "tiles": {

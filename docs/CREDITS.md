@@ -17,9 +17,7 @@
 
 ---------------------------------------------------
 
-"Blue Marble" is made by SwingTheVine
-
-The favicon "Blue Marble" is owned by NASA
+"Blue Marble" is made by SwingTheVine and INP146
 
 Special Thanks:
 * nof, [darkness](https://github.com/TouchedByDarkness) for creating similar userscripts!
