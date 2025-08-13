@@ -1,4 +1,4 @@
-## 目录
+# 目录
 
 * [Blue Marble](#blue-marble)
 
@@ -16,26 +16,6 @@
     * [Blue Marble 如何帮我放置像素？](#blue-marble-如何帮我放置像素)
     * [如何隐藏叠加层？](#如何隐藏叠加层)
     * [为什么游戏通知会显示在叠加层上方？](#为什么游戏通知会显示在叠加层上方)
-
----
-
-# Blue Marble
-
-[![Wplace 状态](https://wplacestatus.sobakintech.xyz/api/badge/15/status)](https://wplacestatus.sobakintech.xyz)
-![最新版本](https://img.shields.io/badge/Latest_Version-Version-lightblue?style=flat)
-[![最新发布版本](https://img.shields.io/github/v/release/INP146/Wplace-BlueMarble?sort=semver\&style=flat\&label=Latest%20Release\&color=blue)](https://github.com/INP146/Wplace-BlueMarble/releases)
-[![软件许可证 MPL-2.0](https://img.shields.io/badge/Software_License-MPL--2.0-slateblue?style=flat)](https://github.com/INP146/Wplace-BlueMarble/blob/main/LICENSE.txt)
-[![联系我](https://img.shields.io/badge/Contact_Me-gray?style=flat\&logo=Discord\&logoColor=white\&logoSize=auto\&labelColor=cornflowerblue)](https://discord.gg/tpeBPy46hf)
-![编程时间](https://img.shields.io/badge/Coding_Time-111hrs_12mins-blue?style=flat\&logo=wakatime\&logoColor=black\&labelColor=white)
-![总补丁数](https://img.shields.io/badge/Total_Patches-494-black?style=flat)
-![代码总行数](https://tokei.rs/b1/github/INP146/Wplace-BlueMarble?category=code)
-![注释总数](https://tokei.rs/b1/github/INP146/Wplace-BlueMarble?category=comments)
-![压缩率](https://img.shields.io/badge/Compression-74.77%25-blue)
-![仓库大小](https://img.shields.io/github/repo-size/INP146/Wplace-BlueMarble)
-![访问者](https://img.shields.io/badge/Visitors-84_851-gainsboro?style=flat)
-![下载次数](https://img.shields.io/github/downloads/INP146/Wplace-BlueMarble/total.svg)
-![构建状态](https://github.com/INP146/Wplace-BlueMarble/actions/workflows/build.yml/badge.svg)
-![CodeQL](https://github.com/INP146/Wplace-BlueMarble/actions/workflows/github-code-scanning/codeql/badge.svg)
 
 ---
 
