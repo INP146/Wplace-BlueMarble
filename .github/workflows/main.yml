@@ -1,0 +1,139 @@
+name: CI & 发布
+
+# 触发条件
+on:
+  push:
+    branches: [ main ]         # 推送到 main 分支时触发
+  pull_request:
+    branches: [ main ]         # PR 目标是 main 分支时触发
+  workflow_dispatch:           # 手动触发
+    inputs:
+      release_notes:           # 可选：发布说明
+        description: 发布说明（可选）
+        required: false
+        type: string
+      prerelease:              # 是否标记为预发布
+        description: 标记为预发布
+        required: false
+        default: false
+        type: boolean
+
+# 权限设置：允许推送提交和创建 Release
+permissions:
+  contents: write
+
+# 并发控制：同一个分支的运行不会同时重复
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # 普通构建（push / PR）
+  build:
+    name: 推送或 PR 时构建
+    if: ${{ github.event_name != 'workflow_dispatch' }}   # 不是手动触发才跑
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 构建项目
+        run: npm run build
+
+      - name: 上传 dist 构建产物
+        if: ${{ hashFiles('dist/**') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: ignore
+
+  # 发布流程（手动触发）
+  release:
+    name: 打补丁 + 构建 + 发布
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码（包含 tags）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 执行 patch 脚本（提升版本 + 更新 README）
+        run: npm run patch
+
+      - name: 查看改动
+        run: |
+          git status --porcelain
+          git --no-pager diff --stat || true
+
+      - name: 提交并推送改动
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "没有文件改动，跳过提交。"
+          else
+            git commit -m "chore: patch release v$VERSION [skip ci]"
+            git push
+          fi
+
+      - name: 打版本 tag
+        run: |
+          VERSION=${{ env.VERSION || '' }}
+          if [ -z "$VERSION" ]; then
+            VERSION=$(node -p "require('./package.json').version")
+          fi
+          echo "打 tag v$VERSION"
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "Tag v$VERSION 已存在，跳过。"
+          else
+            git tag "v$VERSION"
+            git push origin "v$VERSION"
+          fi
+
+      - name: 上传 dist 构建产物
+        if: ${{ hashFiles('dist/**') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: ignore
+
+      - name: 创建 GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: v${{ env.VERSION }}
+          body: ${{ inputs.release_notes }}
+          prerelease: ${{ inputs.prerelease }}
+          files: |
+            dist/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
